@@ -21,6 +21,13 @@
 <h4>Comments</h4>
 
 <% if user_signed_in? %>
+  <%= render partial: "comments/form", locals: { comment: Comment.new, commentable: @post } %>
 <% else %>
   <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "login", new_user_session_path %> to comment
+<% end %>
+
+<%= turbo_stream_from @post, :comments %>
+
+<%= tag.div id: "#{dom_id(@post)}_comments" do %>
+  <%= render @post.comments %>
 <% end %>

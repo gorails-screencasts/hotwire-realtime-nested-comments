@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :comments, module: :posts
   end
 
-  resources :comments, only: [:show, :edit, :update]
+  resources :comments
 
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
