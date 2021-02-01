@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to posts_path, class: 'btn btn-default' do %>
+    All Posts
+  <% end %>
+  <%= link_to edit_post_path(@post), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show post</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @post.title %></dd>
+
+  <dt>Body:</dt>
+  <dd><%= @post.body %></dd>
+</dl>
+
+<hr />
+
+<h4>Comments</h4>
+
+<% if user_signed_in? %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "login", new_user_session_path %> to comment
+<% end %>
